@@ -31,7 +31,7 @@ app_configs.each do |app|
    
     
     deploy_user   = stage_data['deploy_user']
-    base_path     = "/home/#{deploy_user}/#{appname}/#{stage_name}"    
+    base_path     = "/var/www/#{appname}/#{stage_name}"    
     instance_name = [appname, stage_name].join("_")
 
     # Set up directory and file name info for SSL certs
