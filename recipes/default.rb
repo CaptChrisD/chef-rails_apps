@@ -41,7 +41,7 @@ include_recipe "rvm::system"
 include_recipe "rvm_passenger::default"
 include_recipe "rvm_passenger::apache2"
 
-rvm_gem "bundler" do
+gem "rvm-capistrano" do
   ruby_string node[:rvm_passenger][:rvm_ruby]
   action :install
 end
