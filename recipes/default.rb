@@ -43,12 +43,7 @@ include_recipe "rvm_passenger::apache2"
 
 rvm_gem "bundler" do
   ruby_string node[:rvm_passenger][:rvm_ruby]
-  if node[:bundler][:version]
-    version node[:bundler][:version]
-    action :install
-  else
-    action :install
-  end
+  action :install
 end
 
 # NOTE: Set up a role, and define all the attributes required
