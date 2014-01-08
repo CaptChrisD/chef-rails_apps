@@ -45,6 +45,18 @@ package "nodejs" do
 	action :install
 end
 
+#build the C library used for activation
+Chef::Log.info("Compiling RPSF Registration library")
+bash "compile_registration" do
+  code <<-EOH
+  cd /tmp
+  git clone https://github.com/ghitchens/rpsf.git
+  cd rpsf/lib/ext/registration
+  ruby extconf.rb
+  cd /tmp
+  rm -r rpsf
+  EOH
+end
 # NOTE: Set up a role, and define all the attributes required
 # by the above recipes. For example:
 #
