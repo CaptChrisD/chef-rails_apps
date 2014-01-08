@@ -41,6 +41,10 @@ include_recipe "rvm::system"
 include_recipe "rvm_passenger::default"
 include_recipe "rvm_passenger::apache2"
 
+package "nodejs" do
+	action :install
+end
+
 # NOTE: Set up a role, and define all the attributes required
 # by the above recipes. For example:
 #
