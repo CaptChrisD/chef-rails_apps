@@ -52,7 +52,9 @@ bash "compile_registration" do
   cd /tmp
   git clone https://github.com/ghitchens/rpsf.git
   cd rpsf/lib/ext/registration
+  y
   ruby extconf.rb
+  make
   cd /tmp
   rm -r rpsf
   EOH
