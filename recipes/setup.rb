@@ -56,6 +56,11 @@ app_configs.each do |app|
         recursive true  # mkdir -p
       end
     end
+    
+    #find best host
+    host = node['rails_apps']['db_address'] || 
+           search(:node, "mysql_master:true").first["ipaddress"] || 
+           stage_data['database']['host']
   
     # write database.yml files in a shared directory
     template "#{base_path}/shared/config/database.yml" do
@@ -66,7 +71,7 @@ app_configs.each do |app|
       variables(
         :stage_name => stage_name,
         :adapter    => stage_data['database']['adapter'],
-        :host       => node['rails_apps']['db_address'] || stage_data['database']['host'],
+        :host       => host,
         :port       => stage_data['database']['port'],
         :dbname     => stage_data['database']['dbname'],
         :pool       => stage_data['database']['pool'],
