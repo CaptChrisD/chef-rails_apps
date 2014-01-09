@@ -62,6 +62,8 @@ app_configs.each do |app|
            search(:node, "mysql_master:true").first["ipaddress"] || 
            stage_data['database']['host']
   
+    Chef::Log.info("Setting database host to: #{host}.")
+    
     # write database.yml files in a shared directory
     template "#{base_path}/shared/config/database.yml" do
       source "database.yml.erb"
