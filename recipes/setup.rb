@@ -58,9 +58,7 @@ app_configs.each do |app|
     end
     
     #find best host
-    host = node['rails_apps']['db_address'] || 
-           search(:node, "mysql_master:true").first["ipaddress"] || 
-           stage_data['database']['host']
+    host = search(:node, "mysql_master:true").first["ipaddress"]
   
     Chef::Log.info("Setting database host to: #{host}.")
     
