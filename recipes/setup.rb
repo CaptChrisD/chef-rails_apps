@@ -58,7 +58,7 @@ app_configs.each do |app|
     end
   
     # write database.yml files in a shared directory
-    template "#{base_path}/shared/system/database.yml" do
+    template "#{base_path}/shared/config/database.yml" do
       source "database.yml.erb"
       owner deploy_user
       group deploy_group
@@ -66,7 +66,7 @@ app_configs.each do |app|
       variables(
         :stage_name => stage_name,
         :adapter    => stage_data['database']['adapter'],
-        :host       => stage_data['database']['host'],
+        :host       => node['rails_apps']['db_address'] || stage_data['database']['host'],
         :port       => stage_data['database']['port'],
         :dbname     => stage_data['database']['dbname'],
         :pool       => stage_data['database']['pool'],
