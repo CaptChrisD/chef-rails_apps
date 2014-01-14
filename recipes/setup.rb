@@ -46,6 +46,7 @@ app_configs.each do |app|
       "#{base_path}/releases",
       "#{base_path}/shared",
       "#{base_path}/shared/system",
+      "#{base_path}/shared/config"
     ]
     app_directories.each do |dir|
       directory dir do
